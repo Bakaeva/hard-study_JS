@@ -1,13 +1,42 @@
-let num = 266219;
+let lang = 'en'; // предполагаем, что возможно только одно из 2-х значений: 'ru' или 'en'
+let weekDaysRu = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+let weekDaysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-let str = String(num);
-let multiplication = 1;
-let msg = "";
-for (let i = 0; i < str.length; i++) {
-  multiplication *= str[i];
-  msg += str[i] + "*";
+// task 1a:
+console.log('  with IF:');
+if (lang === 'ru')
+  console.log(weekDaysRu.toString());
+else // if (lang === 'en')
+  console.log(weekDaysEn.toString());
+
+// task 1b:
+console.log('  with SWITCH:');
+switch (lang) {
+  case 'ru':
+    console.log(weekDaysRu.toString());
+    break;
+  case 'en':
+    console.log(weekDaysEn.toString());
+    break;
+    //default:
 }
-console.log(msg.substr(0, str.length * 2 - 1) + "=" + multiplication);
 
-let powerOfNumber = multiplication ** 3;
-console.log(String(powerOfNumber).substr(0, 2));
+// task 1c:
+console.log('  with OBJECT:');
+let weekDays = {
+  'ru': weekDaysRu,
+  'en': weekDaysEn
+};
+let weekDaysString = '';
+for (let i = 0; i < 7; i++)
+  weekDaysString += weekDays[lang][i] + ',';
+console.log(weekDaysString.substr(0, weekDaysString.length - 1));
+
+// task 2:
+let namePerson = prompt('Введите имя');
+if (namePerson === null)
+  namePerson = '';
+let namePersonUpCase = namePerson.toUpperCase();
+console.log(namePersonUpCase === 'АРТЕМ' ? 'директор' :
+  namePersonUpCase === 'МАКСИМ' ? 'преподаватель' :
+  'студент');
